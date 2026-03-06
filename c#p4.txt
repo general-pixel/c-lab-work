@@ -1,0 +1,26 @@
+3.write a program to take input from user and perform all relational operators and display output
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Taking input from user
+        Console.Write("Enter first number: ");
+        int a = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter second number: ");
+        int b = Convert.ToInt32(Console.ReadLine());
+
+        // Performing relational operations
+        Console.WriteLine("\nResults of relational operations:");
+
+        Console.WriteLine($"{a} < {b} = {a < b}");
+        Console.WriteLine($"{a} > {b} = {a > b}");
+        Console.WriteLine($"{a} <= {b} = {a <= b}");
+        Console.WriteLine($"{a} >= {b} = {a >= b}");
+        Console.WriteLine($"{a} == {b} = {a == b}");
+        Console.WriteLine($"{a} != {b} = {a != b}");
+    }
+}
