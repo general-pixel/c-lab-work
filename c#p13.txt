@@ -1,0 +1,23 @@
+using System;
+
+class FibonacciProgram
+{
+    static void Main()
+    {
+        Console.Write("Enter a number: ");
+        int limit = Convert.ToInt32(Console.ReadLine());
+
+        int first = 0, second = 1;
+
+        Console.WriteLine("Fibonacci series up to " + limit + " is:");
+
+        while (first <= limit)
+        {
+            Console.Write(first + " ");
+
+            int next = first + second;
+            first = second;
+            second = next;
+        }
+    }
+}
