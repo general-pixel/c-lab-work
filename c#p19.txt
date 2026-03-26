@@ -1,0 +1,153 @@
+definition:
+write a program that calculates bill and gives discount based on customer category(senior citizen, regular, industrial).
+
+using System;
+
+class BillCalculator
+{
+    static void Main()
+    {
+        double amount, discount = 0, discountAmount, finalBill;
+        int choice;
+
+        Console.Write("Enter total bill amount: ");
+        amount = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("\nCustomer Categories:");
+        Console.WriteLine("1. Senior Citizen (20% Discount)");
+        Console.WriteLine("2. Regular (10% Discount)");
+        Console.WriteLine("3. Industrial (30% Discount)");
+        Console.Write("Enter your choice (1-3): ");
+        choice = Convert.ToInt32(Console.ReadLine());
+
+        switch (choice)
+        {
+            case 1:
+                discount = 0.20;
+                break;
+            case 2:
+                discount = 0.10;
+                break;
+            case 3:
+                discount = 0.30;
+                break;
+            default:
+                Console.WriteLine("Invalid choice! No discount applied.");
+                discount = 0;
+                break;
+        }
+
+        discountAmount = amount * discount;
+        finalBill = amount - discountAmount;
+
+        Console.WriteLine("\n------ BILL DETAILS ------");
+        Console.WriteLine("Original Amount: ₹ " + amount);
+        Console.WriteLine("Discount Amount: ₹ " + discountAmount);
+        Console.WriteLine("Final Bill Amount: ₹ " + finalBill);
+
+        Console.ReadLine();
+    }
+}
+
+
+
+definition:
+write a program to determine loan eligibility based on age, income, and credit score using nested conditions.
+
+using System;
+
+class LoanEligibility
+{
+    static void Main()
+    {
+        int age;
+        double income;
+        int creditScore;
+
+        Console.Write("Enter your age: ");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter your monthly income: ");
+        income = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Enter your credit score: ");
+        creditScore = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("\n----- Loan Eligibility Result -----");
+
+        // Outer condition - Age check
+        if (age >= 21 && age <= 60)
+        {
+            // Nested condition - Income check
+            if (income >= 25000)
+            {
+                // Nested condition - Credit score check
+                if (creditScore >= 700)
+                {
+                    Console.WriteLine("Congratulations! You are eligible for the loan.");
+                }
+                else
+                {
+                    Console.WriteLine("Loan Rejected: Credit score is too low.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Loan Rejected: Income is insufficient.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Loan Rejected: Age criteria not satisfied.");
+        }
+
+        Console.ReadLine();
+    }
+}
+
+
+definition:
+write a program to verify PIN first, then allow withdrawal only if balance is sufficient.
+
+using System;
+
+class ATMSystem
+{
+    static void Main()
+    {
+        int correctPIN = 1234;   // Stored PIN
+        int enteredPIN;
+        double balance = 10000;  // Available balance
+        double withdrawAmount;
+
+        Console.Write("Enter your PIN: ");
+        enteredPIN = Convert.ToInt32(Console.ReadLine());
+
+        // First condition: Verify PIN
+        if (enteredPIN == correctPIN)
+        {
+            Console.WriteLine("PIN Verified Successfully.");
+
+            Console.Write("Enter amount to withdraw: ");
+            withdrawAmount = Convert.ToDouble(Console.ReadLine());
+
+            // Second condition: Check balance
+            if (withdrawAmount <= balance)
+            {
+                balance = balance - withdrawAmount;
+                Console.WriteLine("Withdrawal Successful!");
+                Console.WriteLine("Remaining Balance: ₹ " + balance);
+            }
+            else
+            {
+                Console.WriteLine("Insufficient Balance! Withdrawal Failed.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Incorrect PIN! Access Denied.");
+        }
+
+        Console.ReadLine();
+    }
+}
