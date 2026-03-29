@@ -1,0 +1,52 @@
+definition:
+write a program to determine loan eligibility based on age, income, and credit score using nested conditions.
+
+using System;
+
+class LoanEligibility
+{
+    static void Main()
+    {
+        int age;
+        double income;
+        int creditScore;
+
+        Console.Write("Enter your age: ");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter your monthly income: ");
+        income = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Enter your credit score: ");
+        creditScore = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("\n----- Loan Eligibility Result -----");
+
+        // Outer condition - Age check
+        if (age >= 21 && age <= 60)
+        {
+            // Nested condition - Income check
+            if (income >= 25000)
+            {
+                // Nested condition - Credit score check
+                if (creditScore >= 700)
+                {
+                    Console.WriteLine("Congratulations! You are eligible for the loan.");
+                }
+                else
+                {
+                    Console.WriteLine("Loan Rejected: Credit score is too low.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Loan Rejected: Income is insufficient.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Loan Rejected: Age criteria not satisfied.");
+        }
+
+        Console.ReadLine();
+    }
