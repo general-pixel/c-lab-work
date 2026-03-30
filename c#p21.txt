@@ -1,0 +1,45 @@
+definition:
+3.write a program to verify PIN first, then allow withdrawal only if balance is sufficient.
+
+using System;
+
+class ATMSystem
+{
+    static void Main()
+    {
+        int correctPIN = 1234;   // Stored PIN
+        int enteredPIN;
+        double balance = 10000;  // Available balance
+        double withdrawAmount;
+
+        Console.Write("Enter your PIN: ");
+        enteredPIN = Convert.ToInt32(Console.ReadLine());
+
+        // First condition: Verify PIN
+        if (enteredPIN == correctPIN)
+        {
+            Console.WriteLine("PIN Verified Successfully.");
+
+            Console.Write("Enter amount to withdraw: ");
+            withdrawAmount = Convert.ToDouble(Console.ReadLine());
+
+            // Second condition: Check balance
+            if (withdrawAmount <= balance)
+            {
+                balance = balance - withdrawAmount;
+                Console.WriteLine("Withdrawal Successful!");
+                Console.WriteLine("Remaining Balance: ₹ " + balance);
+            }
+            else
+            {
+                Console.WriteLine("Insufficient Balance! Withdrawal Failed.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Incorrect PIN! Access Denied.");
+        }
+
+        Console.ReadLine();
+    }
+}
