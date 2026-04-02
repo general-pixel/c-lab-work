@@ -1,0 +1,29 @@
+write a program to display minimum number from inputted 5 numbers from user
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int min, num;
+
+        Console.WriteLine("Enter 5 numbers:");
+
+        // Read first number and assume it is minimum
+        min = Convert.ToInt32(Console.ReadLine());
+
+        // Loop to read remaining 4 numbers
+        for (int i = 1; i < 5; i++)
+        {
+            num = Convert.ToInt32(Console.ReadLine());
+
+            if (num < min)
+            {
+                min = num;
+            }
+        }
+
+        Console.WriteLine("Minimum number is: " + min);
+    }
+}
