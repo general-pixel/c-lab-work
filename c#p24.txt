@@ -1,0 +1,56 @@
+create a class rectangle that would contain length and width as an instance variable, define constructors [constructor overloading(default, parameterized)] yo initialize variables of objects. define methods to find area and display variables value of objects which area created.
+
+using System;
+
+class Rectangle
+{
+    // Instance variables
+    double length;
+    double width;
+
+    // Default constructor
+    public Rectangle()
+    {
+        length = 0;
+        width = 0;
+    }
+
+    // Parameterized constructor
+    public Rectangle(double l, double w)
+    {
+        length = l;
+        width = w;
+    }
+
+    // Method to calculate area
+    public double FindArea()
+    {
+        return length * width;
+    }
+
+    // Method to display values
+    public void Display()
+    {
+        Console.WriteLine("Length: " + length);
+        Console.WriteLine("Width: " + width);
+        Console.WriteLine("Area: " + FindArea());
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Object using default constructor
+        Rectangle r1 = new Rectangle();
+        Console.WriteLine("Rectangle using Default Constructor");
+        r1.Display();
+
+        Console.WriteLine();
+
+        // Object using parameterized constructor
+        Rectangle r2 = new Rectangle(5, 4);
+        Console.WriteLine("Rectangle using Parameterized Constructor");
+        r2.Display();
+    }
+}
