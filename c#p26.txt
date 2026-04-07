@@ -1,0 +1,116 @@
+definition:
+Define appropriate methods in all classes to perform operations like for both Savings and Current accounts. Use the concept of and implement method overriding where required.
+
+using System;
+
+// Base Class
+class Account
+{
+    public int AccountNumber { get; set; }
+    public double Balance { get; set; }
+
+    public Account(int accNo, double balance)
+    {
+        AccountNumber = accNo;
+        Balance = balance;
+    }
+
+    public void Deposit(double amount)
+    {
+        Balance += amount;
+        Console.WriteLine($"Deposited: {amount}, New Balance: {Balance}");
+    }
+
+    // Virtual method for overriding
+    public virtual void Withdraw(double amount)
+    {
+        if (amount <= Balance)
+        {
+            Balance -= amount;
+            Console.WriteLine($"Withdrawn: {amount}, Remaining Balance: {Balance}");
+        }
+        else
+        {
+            Console.WriteLine("Insufficient balance");
+        }
+    }
+}
+
+// Derived Class: SavingsAccount
+class SavingsAccount : Account
+{
+    public double InterestRate { get; set; }
+
+    public SavingsAccount(int accNo, double balance, double interestRate)
+        : base(accNo, balance)
+    {
+        InterestRate = interestRate;
+    }
+
+    public void AddInterest()
+    {
+        double interest = Balance * InterestRate / 100;
+        Balance += interest;
+        Console.WriteLine($"Interest Added: {interest}, New Balance: {Balance}");
+    }
+
+    // Override Withdraw
+    public override void Withdraw(double amount)
+    {
+        if (amount > Balance)
+        {
+            Console.WriteLine("Cannot withdraw beyond balance in Savings Account");
+        }
+        else
+        {
+            base.Withdraw(amount);
+        }
+    }
+}
+
+// Derived Class: CurrentAccount
+class CurrentAccount : Account
+{
+    public double OverdraftLimit { get; set; }
+
+    public CurrentAccount(int accNo, double balance, double overdraftLimit)
+        : base(accNo, balance)
+    {
+        OverdraftLimit = overdraftLimit;
+    }
+
+    // Override Withdraw
+    public override void Withdraw(double amount)
+    {
+        if (amount <= (Balance + OverdraftLimit))
+        {
+            Balance -= amount;
+            Console.WriteLine($"Withdrawn: {amount}, Remaining Balance: {Balance}");
+        }
+        else
+        {
+            Console.WriteLine("Overdraft limit exceeded");
+        }
+    }
+}
+
+// Main Program
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Savings Account
+        SavingsAccount s = new SavingsAccount(101, 5000, 5);
+        s.Deposit(1000);
+        s.Withdraw(2000);
+        s.AddInterest();
+
+        Console.WriteLine();
+
+        // Current Account
+        CurrentAccount c = new CurrentAccount(102, 3000, 2000);
+        c.Deposit(500);
+        c.Withdraw(4500);
+        c.Withdraw(2000);
+    }
+}
