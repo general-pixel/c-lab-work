@@ -1,0 +1,61 @@
+Definition : 
+
+Write a program to implement interface called Exam with a method Pass (int mark) that returns a boolean. Write another interface called Classify with a method Division (int average) which returns a String. Write a class called Result which implements both Exam and Classify. The Pass method should return true if the mark is greater than or equal to 50 else false. The Division method must return “First” when the parameter average is 60 or more, “Second” when average is 50 or more but below 60, “No division” when average is less than 50
+
+
+using System;
+
+// Interface Exam
+interface Exam
+{
+    bool Pass(int mark);
+}
+
+// Interface Classify
+interface Classify
+{
+    string Division(int average);
+}
+
+// Class Result implementing both interfaces
+class Result : Exam, Classify
+{
+    // Implementation of Pass method
+    public bool Pass(int mark)
+    {
+        return mark >= 50;
+    }
+
+    // Implementation of Division method
+    public string Division(int average)
+    {
+        if (average >= 60)
+            return "First";
+        else if (average >= 50)
+            return "Second";
+        else
+            return "No division";
+    }
+}
+
+// Main Program
+class Program
+{
+    static void Main(string[] args)
+    {
+        Result r = new Result();
+
+        int mark = 55;
+        int average = 58;
+
+        // Checking pass/fail
+        if (r.Pass(mark))
+            Console.WriteLine("Result: Pass");
+        else
+            Console.WriteLine("Result: Fail");
+
+        // Checking division
+        Console.WriteLine("Division: " + r.Division(average));
+    }
+}
+
