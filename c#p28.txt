@@ -1,0 +1,54 @@
+Definition : Write a program to implement an interface called with a method Pass(int mark) that returns a boolean value. Write another interface called with a method Division(int average) that returns a String. Create a class called which implements both the and interfaces. The Pass method should return if the mark is greater than or equal to 50, otherwise it should return .
+The Division method should return:
+
+
+
+using System;
+
+// Interface 1
+interface IPass
+{
+    bool Pass(int mark);
+}
+
+// Interface 2
+interface IDivision
+{
+    string Division(int average);
+}
+
+// Class implementing both interfaces
+class Result : IPass, IDivision
+{
+    public bool Pass(int mark)
+    {
+        return mark >= 50;
+    }
+
+    public string Division(int average)
+    {
+        if (average >= 75)
+            return "Distinction";
+        else if (average >= 60)
+            return "First Division";
+        else if (average >= 50)
+            return "Second Division";
+        else
+            return "Fail";
+    }
+}
+
+// Main class
+class Program
+{
+    static void Main()
+    {
+        Result r = new Result();
+
+        int mark = 65;
+        int average = 68;
+
+        Console.WriteLine("Pass Status: " + r.Pass(mark));
+        Console.WriteLine("Division: " + r.Division(average));
+    }
+}
